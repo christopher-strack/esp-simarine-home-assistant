@@ -141,8 +141,7 @@ extern "C" void app_main(void) {
     wifi_connected_promise.wait();
   }
 
-  mqtt_client mqtt_client{create_mqtt_user_config(
-      mqtt_broker_uri, mqtt_root_ca_certificate, mqtt_username, mqtt_password)};
+  mqtt_client mqtt_client{create_mqtt_config()};
   {
     auto mqtt_client_connected_promise = mqtt_client.make_connected_promise();
     mqtt_client.start();
