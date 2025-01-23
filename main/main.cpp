@@ -92,13 +92,8 @@ bool start(mqtt_client& client) {
   auto devices = spymarine::discover().and_then([&](const auto ip) {
     ESP_LOGI(TAG, "Read devices");
 
-    spymarine::filter_by_device_type<spymarine::temperature_device,
-                                     spymarine::tank_device,
-                                     spymarine::battery_device>
-        device_filter;
-
     return spymarine::read_devices<spymarine::tcp_socket>(
-        buffer, ip, spymarine::simarine_default_tcp_port, device_filter);
+        buffer, ip, spymarine::simarine_default_tcp_port, make_device_filter());
   });
 
   if (!devices) {
@@ -141,7 +136,7 @@ extern "C" void app_main(void) {
     wifi_connected_promise.wait();
   }
 
-  mqtt_client mqtt_client{create_mqtt_config()};
+  mqtt_client mqtt_client{make_mqtt_config()};
   {
     auto mqtt_client_connected_promise = mqtt_client.make_connected_promise();
     mqtt_client.start();
