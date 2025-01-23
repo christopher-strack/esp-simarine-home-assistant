@@ -15,6 +15,7 @@ Tested with Simarine Pico rev2 and firmware 1.17
 - Setup an external MQTT broker (for example http://hivemq.com)
 - Setup the MQTT integration in Home Assistant and connect to the external broker
 - Copy `src/config.example.hpp` to `src/config.hpp` and enter you Wifi password and your MQTT broker credentials
+- Configure the partition in the `sdkconfig` to fit the app, for example by enabling `CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE` using `idf.py menuconfig`
 - Build and flash an ESP32 with [esp-idf](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html)
 - Set your Simarine device to STA mode and connect it to the same Wifi network as the ESP32
 - Power and start the ESP32

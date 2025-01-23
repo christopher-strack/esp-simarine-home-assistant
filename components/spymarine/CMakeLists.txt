@@ -4,7 +4,7 @@ include(FetchContent)
 
 FetchContent_Declare(
     spymarine
-    GIT_REPOSITORY git@github.com:christopher-strack/spymarine-cpp.git
+    GIT_REPOSITORY https://github.com/christopher-strack/spymarine-cpp.git
     GIT_TAG v0.1.0
 )
 
