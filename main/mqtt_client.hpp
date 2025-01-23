@@ -12,16 +12,6 @@
 #include <string_view>
 #include <unordered_map>
 
-/*! Create a config for an mqtt_client that authenticates via a username and
- * password.
- *
- * Arguments are owned by the caller and need to be kept alive during the
- * lifetime of mqtt_client.
- */
-esp_mqtt_client_config_t
-create_mqtt_user_config(const char* broker_uri, const char* root_ca_certificate,
-                        const char* username, const char* password);
-
 /*! The quality of service to use for publishing messages
  */
 enum class mqtt_qos {

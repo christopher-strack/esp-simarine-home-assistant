@@ -9,17 +9,6 @@ static const char* TAG = "mqtt_client";
 
 } // namespace
 
-esp_mqtt_client_config_t
-create_mqtt_user_config(const char* broker_uri, const char* root_ca_certificate,
-                        const char* username, const char* password) {
-  esp_mqtt_client_config_t config{};
-  config.broker.address.uri = broker_uri;
-  config.broker.verification.certificate = root_ca_certificate;
-  config.credentials.username = username;
-  config.credentials.authentication.password = password;
-  return config;
-}
-
 mqtt_client::mqtt_client(esp_mqtt_client_config_t config)
     : _config{std::move(config)}, _client{nullptr} {
   _client = esp_mqtt_client_init(&config);
